@@ -49,7 +49,7 @@ const Navbar = () => {
               </Link>
             </li>
             <li>
-              <Link href="./Home/(components)/Blog.jsx" className="block my-2 py-2 px-3 text-xl font-bold text-black hover:underline hover:decoration-white transition duration-300 md:p-0">
+              <Link href="../(components)/Home/Blog.jsx" className="block my-2 py-2 px-3 text-xl font-bold text-black hover:underline hover:decoration-white transition duration-300 md:p-0">
                 Blog
               </Link>
             </li>
