@@ -1,6 +1,7 @@
 import React from 'react';
 import HomePage from "../app/(components)/Home/HomePage";  
-import HomePage2 from "../app/(components)/Home/HomePage2";
+import HomePage2 from "../app/(components)/Home/HomePage2"; 
+import HomePage3 from "../app/(components)/Home/HomePage3";
 import Navbar from "../app/(components)/Navbar"; 
 import Footer from "../app/(components)/Footer";
 
@@ -15,7 +16,10 @@ function Page() {
       </div> 
       <div> 
          <HomePage2/>
-      </div>
+      </div> 
+      <div> 
+         <HomePage3/>
+        </div>
       <div className='mt-12'>
         <Footer />
       </div> 
