@@ -5,21 +5,32 @@ import React, { useState, useEffect } from 'react';
 // Custom hook to track window size
 const useWindowSize = () => {
   const [windowSize, setWindowSize] = useState({
-    width: window.innerWidth,
-    height: window.innerHeight,
+    width: undefined,
+    height: undefined,
   });
 
   useEffect(() => {
-    const handleResize = () => {
+    // Only execute code when on the client side
+    if (typeof window !== 'undefined') {
+      // Set the initial window size
       setWindowSize({
         width: window.innerWidth,
         height: window.innerHeight,
       });
-    };
 
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
+      const handleResize = () => {
+        setWindowSize({
+          width: window.innerWidth,
+          height: window.innerHeight,
+        });
+      };
+
+      window.addEventListener('resize', handleResize);
+
+      // Cleanup listener on component unmount
+      return () => window.removeEventListener('resize', handleResize);
+    }
+  }, []); // Empty array ensures this effect is only run on mount and unmount
 
   return windowSize;
 };
@@ -27,7 +38,7 @@ const useWindowSize = () => {
 const HomePage2 = () => {
   const { width } = useWindowSize();
 
-  // Determine layout based on screen width
+  // Default values if width is undefined (initial SSR)
   const isTablet = width >= 768 && width <= 1280;
   const isDesktop = width > 1280;
 
